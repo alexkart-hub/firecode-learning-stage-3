@@ -1,0 +1,134 @@
+.footer {
+    padding-top: 20px;
+    background-color: $main_color;
+    color: #ffffff;
+    .wrap_header {
+        width: 100%;
+        .navbar-toggler {
+            padding: 0;
+        }
+        .navbar-toggler-icon {
+            color: #ffffff;
+        }
+        .nav-link {
+            padding: .5rem .5rem;
+            display: inline-flex;
+        }
+    }
+    .navbar {
+        align-items: flex-start;
+        padding: 0.5rem 0rem;
+    }
+    .navbar-expand-lg {
+        flex-flow: wrap;
+        .navbar-collapse {
+            align-items: flex-start;
+        }
+    }
+    .nav-link.header {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 23px;
+    }
+    .nav .nav-link {
+        color: #ffffff;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 25px;
+    }
+    .nav {
+        width: 100%;
+        li {
+            width: 100%;
+        }
+    }
+    .nav-link {
+        transition: all .3s;
+    }
+    .nav-link:hover {
+        transform: scale(1.1);
+    }
+    .row>div {
+        padding: 0;
+    }
+    .wrapUkon {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .ukon {
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 25px;
+        text-transform: uppercase;
+        font-style: italic;
+        span {
+            font-size: 20px;
+            font-style: normal;
+        }
+    }
+    .siluet {
+        margin-left: 20px;
+        margin-bottom: 5px;
+    }
+    .adress p {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .adress>p:first-child {
+        margin-bottom: 5px;
+    }
+    .adress>p:last-child {
+        margin-bottom: 30px;
+    }
+    .line {
+        border-top: 2px solid #FFFFFF;
+    }
+    .footer_line {
+        height: 65px;
+        div:first-child {
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 18px;
+            padding-right: $padding_footer_line;
+        }
+        div:last-child {
+            padding-left: $padding_footer_line;
+        }
+        div:last-child a {
+            color: #ffffff;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+            text-align: right;
+            text-decoration-line: underline;
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .footer {
+        a.nav-link.header {
+            font-size: 14px;
+        }
+        .adress {
+            margin-top: 70px;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .footer {
+        .navbar {
+            padding: 0.5rem 1.5rem;
+            ul {
+                margin-left: 1rem;
+            }
+        }
+        .adress,
+        .wrapUkon {
+            margin: 10px auto;
+        }
+    }
+}
