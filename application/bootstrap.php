@@ -1,8 +1,3 @@
 <?php 
-function autoload($class_name){
-    
-    require_once("core/".$class_name.".php");
-}
-spl_autoload_register('autoload');
-
+require_once 'application/autoload.php';
 Route::start(); // запускаем маршрутизатор

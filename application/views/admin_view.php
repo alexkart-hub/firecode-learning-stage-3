@@ -12,30 +12,26 @@
                 Действие
             </div>
         </div>
-        <div class="row tab_row">
-            <div class="col-md-1 col-sm-2 col-1 text-center tab">
-                1
+        <!-- ************************************************************ -->
+        <?php foreach ($data as $k=>$user) : 
+        if($k != 'view'):
+            $counter++;
+            $tab_row_2 = $counter%2 ? '' : 'tab_row_2';?>
+            <div class="row tab_row <?= $tab_row_2; ?>">
+                <div class="col-md-1 col-sm-2 col-1 text-center tab">
+                    <?= $user['user_id'] ?>
+                </div>
+                <div class="col tab">
+                    <?= $user['login'] ?>
+                </div>
+                <div class="col-lg-2 col-3 text-center tab">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-times"></i>
+                </div>
             </div>
-            <div class="col tab">
-                maxis
-            </div>
-            <div class="col-lg-2 col-3 text-center tab">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-times"></i>
-            </div>
-        </div>
-        <div class="row tab_row tab_row_2">
-            <div class="col-md-1 col-sm-2 col-1 text-center tab">
-                2
-            </div>
-            <div class="col tab">
-                kayus bonus
-            </div>
-            <div class="col-lg-2 col-3 text-center tab">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-times"></i>
-            </div>
-        </div>
+        <?php endif; ?>
+        <?php endforeach; ?>
+         <!-- ************************************************************* -->
     </div>
     <div class="container mb-5">
         <h2>Добавление нового пользователя</h2>

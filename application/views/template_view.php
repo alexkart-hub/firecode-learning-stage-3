@@ -11,7 +11,7 @@
     <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
     <link rel="stylesheet" href="css/jquery-ui.css">
 
-    <title>Hello, world!</title>
+    <title>Stage 3</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -51,6 +51,7 @@
                         </div>
                     </div>
                     <!-- /.col-md-2 phones -->
+                    <?php if($data['view'] != 'admin'): ?>
                     <div class="col-lg-3  d-lg-block d-none calc bg-blue text-md-left wrap_btn">
                         <a href="#" class="btn px-0"><i class="fas fa-calculator"></i>Калькулятор онлайн</a>
                     </div>
@@ -58,9 +59,19 @@
                         <a href="#" class="btn"><i class="fas fa-calculator"></i></a>
                     </div>
                     <!-- /.col-md-3 calc -->
+                    <?php else:?>
+                        <div class="col-lg-3  d-lg-block d-none calc bg-blue text-md-left wrap_btn">
+                        <p class="mt-5 mb-0 text-right">Здравствуйте, <?=$_COOKIE['login']; ?>!</p>
+                        <p class="logout text-right">
+                            <a href="logout">Выйти</a>
+                        </p>
+                    </div>
+                        
+                    <?php endif;?>
                 </div>
             </div>
         </div>
+        <?php if($data['view'] != 'admin'): ?>
         <div class="header_bottom">
             <div class="container pl-0">
                 <nav class="navbar navbar-expand-md">
@@ -86,7 +97,7 @@
             </div>
         </div>
         <!-- /.row header_bottom -->
-
+        <?php endif;?>
     </header>
     <!-- /header -->
     
