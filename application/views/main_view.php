@@ -9,26 +9,26 @@
                             <h3>Характеристики</h3>
                             <div class="item_calc">
                                 <label for="area" class="label_calc">Площадь потолка:</label>
-                                <input type="text" name="area" placeholder="0" maxlength="4" class="input_calc"> кв.м.
+                                <input type="text" name="area" placeholder="0" maxlength="4" class="input_calc" id="area"> кв.м.
                             </div>
                             <div class="item_calc span">
                                 <span> Количество</span>
                             </div>
                             <div class="item_calc">
                                 <label for="col_lamp" class="label_calc pl-sm-5">светильников:</label>
-                                <input type="text" name="col_lamp" placeholder="0" maxlength="4" class="input_calc"> шт.
+                                <input type="text" name="col_lamp" placeholder="0" maxlength="4" class="input_calc" id="q_lamp"> шт.
                             </div>
                             <div class="item_calc">
                                 <label for="col_chandelier" class="label_calc pl-sm-5">люстр:</label>
-                                <input type="text" name="col_chandelier" placeholder="0" maxlength="4" class="input_calc"> шт.
+                                <input type="text" name="col_chandelier" placeholder="0" maxlength="4" class="input_calc" id="q_chandelier"> шт.
                             </div>
                             <div class="item_calc">
                                 <label for="col_pipe" class="label_calc pl-sm-5">труб:</label>
-                                <input type="text" name="col_pipe" placeholder="0" maxlength="4" class="input_calc"> шт.
+                                <input type="text" name="col_pipe" placeholder="0" maxlength="4" class="input_calc" id="q_pipe"> шт.
                             </div>
                             <div class="item_calc">
                                 <label for="col_corner" class="label_calc pl-sm-5">углов:</label>
-                                <input type="text" name="col_corner" placeholder="0" maxlength="4" class="input_calc"> шт.
+                                <input type="text" name="col_corner" placeholder="0" maxlength="4" class="input_calc" id="q_corner"> шт.
                             </div>
 
                         </div>

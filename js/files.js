@@ -32,6 +32,7 @@ $(".input_calc").on({
             e.key == 7 ||
             e.key == 8 ||
             e.key == 9 ||
+            e.key == "." ||
             e.key == "Tab" ||
             e.key == "Backspace" ||
             e.key == "Delete" ||

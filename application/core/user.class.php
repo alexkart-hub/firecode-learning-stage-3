@@ -42,7 +42,7 @@ class User
             $num_row = 0;
             while ($row = $result->fetch_assoc()) {
                 foreach ($row as $key => $vol) {
-                    $users_data[$num_row][$key] = $vol;
+                    $users_data["user_".$num_row][$key] = $vol;
                 }
                 $num_row++;
             }

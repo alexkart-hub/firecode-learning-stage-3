@@ -1054,10 +1054,8 @@ h2 {
     margin-top: 15px;
 }
 
-.orders .row {
-    height: 100%;
-}
-
+.orders div.order-1 .row,
+.orders div.order-2 .row,
 .orders div.order-3 .row {
     height: 100%;
 }

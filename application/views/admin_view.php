@@ -13,20 +13,21 @@
             </div>
         </div>
         <!-- ************************************************************ -->
-        <?php foreach ($data as $k => $user) :
-            if ($k !== 'view') :
+        <?php $counter = 0;
+        foreach ($data as $k => $user) :
+            if ($k === 'user_' . $counter) :
                 $counter++;
                 $tab_row_2 = $counter % 2 ? '' : 'tab_row_2'; ?>
                 <div class="row tab_row <?= $tab_row_2; ?> ">
                     <div class="col-md-1 col-sm-2 col-1 text-center tab user_id" id="item-<?= $user['user_id']; ?>">
                         <?= $user['user_id']; ?>
                     </div>
-                    <div class="col tab login" >
+                    <div class="col tab login">
                         <?= $user['login']; ?>
                     </div>
                     <div class="col-lg-2 col-3 text-center tab">
-                        <i class="fas fa-edit" id="d-<?= $user['user_id']; ?>"></i>
-                        <i class="fas fa-times" id="e-<?= $user['user_id']; ?>"></i>
+                        <i class="fas fa-edit" id="e-<?= $user['user_id']; ?>"></i>
+                        <i class="fas fa-times" id="d-<?= $user['user_id']; ?>"></i>
                     </div>
                 </div>
             <?php endif; ?>
@@ -43,7 +44,9 @@
                     <label for="">Пароль</label>
                     <input type="password" placeholder="Пароль пользователя" name="password" id="password">
                     <input id="button1" type="submit" value="Добавить пользователя" name="add_user">
+                    <div class="new_user_form_out" id="new_user_form_out"></div>
                 </div>
+
             </div>
         </form>
     </div>
@@ -52,54 +55,60 @@
     <div class="container new_user_form">
         <h1>Настройки калькулятора</h1>
         <form action="" method="post">
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <label for="">Цена за кв.м потолка:</label>
-                <input type="text" value="270">
-                <label for="">Цена за светильник:</label>
-                <input type="text" value="170">
-                <label for="">Цена за угол:</label>
-                <input type="text" value="120">
-            </div>
-            <div class="col-lg-8 col-md-6">
-                <div class="container px-0">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="">Цена за глянцевую фактуру:</label>
-                            <input type="text" value="25">
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="">Цена за матовую фактуру:</label>
-                            <input type="text" value="21">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="">Цена за люстру:</label>
-                            <input type="text" value="225">
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="">Цена за трубу:</label>
-                            <input type="text" value="150">
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <label for="">Цена за кв.м потолка:</label>
+                    <input type="text" class="input_calc" value="270">
+                    <label for="">Цена за светильник:</label>
+                    <input type="text" class="input_calc" value="170">
+                    <label for="">Цена за угол:</label>
+                    <input type="text" class="input_calc" value="120">
                 </div>
+                <div class="col-lg-8 col-md-6">
+                    <div class="container px-0">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="">Цена за глянцевую фактуру:</label>
+                                <input type="text" class="input_calc" value="25">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="">Цена за матовую фактуру:</label>
+                                <input type="text" class="input_calc" value="21">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="">Цена за люстру:</label>
+                                <input type="text" class="input_calc" value="225">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="">Цена за трубу:</label>
+                                <input type="text" class="input_calc" value="150">
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <label for="">Варианты цветов</label>
-                <ul>
-                    <li>Белый <i class="fas fa-times"></i></li>
-                    <li>Синий <i class="fas fa-times"></i></li>
-                    <li>Желтый <i class="fas fa-times"></i></li>
-                    <li>Зеленый <i class="fas fa-times"></i></li>
-                </ul>
-                <p class="add_new_color">Добавить новый цвет <i class="fas fa-plus"></i></p>
-                <input id="button2" type="submit" value="Сохранить изменения" name="saveChange">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <label for="">Варианты цветов</label>
+                    <ul>
+                        <?php $counter = 1;
+                        foreach ($data as $key => $color) :
+                            if ($key == "color" . $counter) :
+                        ?>
+                                <li><?= $color; ?> <i class="fas fa-times" id=<?= $key; ?>></i></li>
+                        <?php
+                                $counter++;
+                            endif;
+                        endforeach; ?>
+                    </ul>
+                    <p class="add_new_color">Добавить новый цвет <i class="fas fa-plus"></i></p>
+                    <input id="button2" type="submit" value="Сохранить изменения" name="saveChange">
+                    <input type="hidden" name="" id="addColor" value="Серенький">
+                </div>
             </div>
-        </div>
         </form>
     </div>
 </section>

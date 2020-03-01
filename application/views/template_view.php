@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/jquery-ui.css">
 
     <title>Stage 3</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?<?= time(); ?>">
 </head>
 
 <body>
