@@ -13,42 +13,45 @@
             </div>
         </div>
         <!-- ************************************************************ -->
-        <?php foreach ($data as $k=>$user) : 
-        if($k != 'view'):
-            $counter++;
-            $tab_row_2 = $counter%2 ? '' : 'tab_row_2';?>
-            <div class="row tab_row <?= $tab_row_2; ?>">
-                <div class="col-md-1 col-sm-2 col-1 text-center tab">
-                    <?= $user['user_id'] ?>
+        <?php foreach ($data as $k => $user) :
+            if ($k !== 'view') :
+                $counter++;
+                $tab_row_2 = $counter % 2 ? '' : 'tab_row_2'; ?>
+                <div class="row tab_row <?= $tab_row_2; ?> ">
+                    <div class="col-md-1 col-sm-2 col-1 text-center tab user_id" id="item-<?= $user['user_id']; ?>">
+                        <?= $user['user_id']; ?>
+                    </div>
+                    <div class="col tab login" >
+                        <?= $user['login']; ?>
+                    </div>
+                    <div class="col-lg-2 col-3 text-center tab">
+                        <i class="fas fa-edit" id="d-<?= $user['user_id']; ?>"></i>
+                        <i class="fas fa-times" id="e-<?= $user['user_id']; ?>"></i>
+                    </div>
                 </div>
-                <div class="col tab">
-                    <?= $user['login'] ?>
-                </div>
-                <div class="col-lg-2 col-3 text-center tab">
-                    <i class="fas fa-edit"></i>
-                    <i class="fas fa-times"></i>
-                </div>
-            </div>
-        <?php endif; ?>
+            <?php endif; ?>
         <?php endforeach; ?>
-         <!-- ************************************************************* -->
+        <!-- ************************************************************* -->
     </div>
     <div class="container mb-5">
         <h2>Добавление нового пользователя</h2>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm new_user_form">
-                <label for="">Логин</label>
-                <input type="text" placeholder="Логин пользователя">
-                <label for="">Пароль</label>
-                <input type="text" placeholder="Пароль пользователя">
-                <input type="button" value="Добавить пользователя">
+        <form action="createuser.php" method="post">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm new_user_form">
+                    <label for="">Логин</label>
+                    <input type="text" placeholder="Логин пользователя" name="login" id="login">
+                    <label for="">Пароль</label>
+                    <input type="password" placeholder="Пароль пользователя" name="password" id="password">
+                    <input id="button1" type="submit" value="Добавить пользователя" name="add_user">
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </section>
 <section class="calculator_setting my-5">
     <div class="container new_user_form">
         <h1>Настройки калькулятора</h1>
+        <form action="" method="post">
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <label for="">Цена за кв.м потолка:</label>
@@ -94,9 +97,10 @@
                     <li>Зеленый <i class="fas fa-times"></i></li>
                 </ul>
                 <p class="add_new_color">Добавить новый цвет <i class="fas fa-plus"></i></p>
-                <input type="button" value="Сохранить изменения">
+                <input id="button2" type="submit" value="Сохранить изменения" name="saveChange">
             </div>
         </div>
+        </form>
     </div>
 </section>
 <section class="orders mb-5">

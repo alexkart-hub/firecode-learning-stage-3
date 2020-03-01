@@ -18,6 +18,22 @@ class User
             return false;
         }
     }
+    static public function GetUserById($user_id)
+    {
+        $db = Db::getInstance();
+        $query = "SELECT * FROM users WHERE user_id = '$user_id'";
+        $result = $db->query($query);
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            foreach ($row as $key => $vol) {
+                $user_data[$key] = $vol;
+            }
+            $result->free();
+            return $user_data;
+        } else {
+            return false;
+        }
+    }
     static public function GetAllUsers()
     {
         $db = Db::getInstance();
@@ -57,7 +73,8 @@ class User
         $result = $db->query($query);
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
-            if (password_verify($password, password_hash($row['password'], PASSWORD_DEFAULT))) {
+            // if (password_verify($password, password_hash($row['password'],PASSWORD_DEFAULT))) {
+            if (password_verify($password, $row['password'])) {
                 return true;
             } else {
                 return false;
@@ -66,17 +83,47 @@ class User
             return false;
         }
     }
+    static public function CreateUser($login,$password)
+    {
+        $db = Db::getInstance();
+        $login = $db->real_escape_string($login);
+        $password = password_hash($password,PASSWORD_DEFAULT);
+        $query = "INSERT INTO users (login, password) VALUES ('$login','$password')";
+        if($db->query($query)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    static public function UpdateUser($login,$password)
+    {
+        $db = Db::getInstance();
+        $login = $db->real_escape_string($login);
+        $password = password_hash($password,PASSWORD_DEFAULT);
+        $query = "UPDATE users SET  password = '$password' WHERE login = '$login'";
+        if($db->query($query)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    static public function DeleteUser($login)
+    {
+        $db = Db::getInstance();
+        $login = $db->real_escape_string($login);
+        $query = "DELETE FROM users WHERE login = '$login'";
+        if($db->query($query)){
+            return true;
+        } else {
+            return false;
+        }
+    }
     static public function SessionStart($login)
     {
         $user_data = User::GetUser($login);
-        // debug($user_data);
         setcookie('user_id', $user_data['user_id'], time() + (60 * 60 * 24 * 30));
         setcookie('login', $user_data['login'], time() + (60 * 60 * 24 * 30));
         setcookie('admin', $user_data['password'], time() + (60 * 60 * 24 * 30));
-
-        // session_start();
-        // $_SESSION['login'] = $user_data['login'];
-        // $_SESSION['admin'] = $user_data['password'];
     }
     static public function SessionStop()
     {
@@ -86,7 +133,5 @@ class User
         setcookie('user_id', '', -1, '/');
         setcookie('login', '', -1, '/');
         setcookie('admin', '', -1, '/');
-        // session_start();
-		// session_destroy();
     }
 }

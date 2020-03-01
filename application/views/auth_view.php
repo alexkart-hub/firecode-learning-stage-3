@@ -7,7 +7,7 @@
             <label for="login">Логин:</label>
             <input type="text" id="login" name="login" placeholder="Ваш логин">
             <label for="password">Пароль:</label>
-            <input type="text" id="password" name="password" placeholder="Ваш пароль">
+            <input type="password" id="password" name="password" placeholder="Ваш пароль">
             <input type="submit" value="Войти" id="submit_auth" name="submit_auth">
         </form>
     </div>

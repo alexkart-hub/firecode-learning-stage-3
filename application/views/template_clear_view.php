@@ -37,6 +37,7 @@
     <script src="js/jquery.nice-select.js"></script>
     <script src="js/jquery.maskedinput.js"></script>
     <script src="js/files.js"></script>
+    <script src="js/ajaxQuerys.js"></script>
 </body>
 
 </html>

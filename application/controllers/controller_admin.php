@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Controller_Admin extends Controller
 {
 	public function __construct()
@@ -9,15 +9,16 @@ class Controller_Admin extends Controller
 	public function action_index()
 	{
 		$user = User::GetUser($_COOKIE['login']);
-		if ( !empty($_COOKIE['admin']) && ($_COOKIE['admin'] == $user['password'] ))
-		{
+		if (!empty($_COOKIE['admin']) && ($_COOKIE['admin'] == $user['password'])) {
 			$data = $this->model->getData();
 			$data += ['view' => 'admin'];
-			$this->view->generate('admin_view.php', 'template_view.php',$data);
-		}
-		else
-		{
+			$this->load_view($data);
+		} else {
 			header("Location: auth");
 		}
+	}
+	protected function load_view($data)
+	{
+		$this->view->generate('admin_view.php', 'template_view.php', $data);
 	}
 }
