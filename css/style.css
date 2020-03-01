@@ -1054,6 +1054,27 @@ h2 {
     margin-top: 15px;
 }
 
+.calculator_setting #addColorBlock {
+    position: fixed;
+    display: none;
+    top: 30%;
+    left: 50%;
+    width: 300px;
+    height: 250px;
+    margin-left: -150px;
+    margin-top: -75px;
+    background-color: #005FA3;
+    padding: 20px;
+    vertical-align: middle;
+}
+
+.calculator_setting #addColor_button {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
 .orders div.order-1 .row,
 .orders div.order-2 .row,
 .orders div.order-3 .row {

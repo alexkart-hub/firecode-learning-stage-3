@@ -5,7 +5,8 @@ class Model_Admin extends Model
     {
         $data = User::GetAllUsers();
          $data += Db::GetColors();
-        // debug($data);
+         $data += Db::GetSetting();
+        debug($data);
         return $data;
     }
 }

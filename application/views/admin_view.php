@@ -58,32 +58,32 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <label for="">Цена за кв.м потолка:</label>
-                    <input type="text" class="input_calc" value="270">
+                    <input type="text" class="input_calc" id="price_area" value="270">
                     <label for="">Цена за светильник:</label>
-                    <input type="text" class="input_calc" value="170">
+                    <input type="text" class="input_calc" id="price_lamp" value="170">
                     <label for="">Цена за угол:</label>
-                    <input type="text" class="input_calc" value="120">
+                    <input type="text" class="input_calc" id="price_corner" value="120">
                 </div>
                 <div class="col-lg-8 col-md-6">
                     <div class="container px-0">
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Цена за глянцевую фактуру:</label>
-                                <input type="text" class="input_calc" value="25">
+                                <input type="text" class="input_calc" id="price_glossy" value="25">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Цена за матовую фактуру:</label>
-                                <input type="text" class="input_calc" value="21">
+                                <input type="text" class="input_calc" id="price_matt" value="21">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Цена за люстру:</label>
-                                <input type="text" class="input_calc" value="225">
+                                <input type="text" class="input_calc" id="price_chandelier" value="225">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Цена за трубу:</label>
-                                <input type="text" class="input_calc" value="150">
+                                <input type="text" class="input_calc" id="price_pipe" value="150">
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                    <label for="">Варианты цветов</label>
+                    <label id="label_colors">Варианты цветов</label>
                     <ul>
                         <?php $counter = 1;
                         foreach ($data as $key => $color) :
@@ -106,7 +106,13 @@
                     </ul>
                     <p class="add_new_color">Добавить новый цвет <i class="fas fa-plus"></i></p>
                     <input id="button2" type="submit" value="Сохранить изменения" name="saveChange">
-                    <input type="hidden" name="" id="addColor" value="Серенький">
+                    <div id="addColorBlock">
+                        <label for="addColor"></label>
+                        <input type="text" name="addColor" id="addColor" placeholder="Введите цвет">
+                        <div id="addColor_button">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>

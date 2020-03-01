@@ -31,12 +31,18 @@ $('.fa-times').on({
 
 $('.fa-plus').on({
     click: function(e) {
+        $('#addColorBlock').toggleClass('d-block');
+    }
+});
+$('#addColor_button').on({
+    click: function(e) {
         $.ajax({
             type: 'POST',
             cache: false,
             url: 'addColor.php',
             data: { color: $('#addColor').val() },
             success: function(html) {
+                $('#addColorBlock').toggleClass('d-none');
                 location.reload(false);
             }
         });
@@ -59,4 +65,40 @@ $('#login').on({
             }
         });
     }
+});
+
+// #price_area, #price_lamp, #price_corner, #price_glossy, #price_matt, #price_chandelier, #price_pipe,
+$('#area, #q_lamp, #q_chandelier, #q_pipe, #q_corner, #factura1, #factura2, input[id*="color"]').on({
+    input: function(e) {
+        calc(this.id, this.value);
+    }
+});
+
+function calc(this_id, this_value){
+    if($('#factura1').prop('checked')){
+        factura = 1;
+    } else {
+        factura = 2;
+    }
+    $.ajax({
+        type: "POST",
+        url: "calculator.php",
+        data: {
+            area: $('#area').val(),
+            q_lamp: $('#q_lamp').val(),
+            q_chandelier: $('#q_chandelier').val(),
+            q_pipe: $('#q_pipe').val(),
+            q_corner: $('#q_corner').val(),
+            factura: factura,
+            id: this_id,
+            value: this_value
+        },
+        success: function(html) {
+            $('#total_price').text(html);
+        }
+    });
+}
+
+$(()=>{
+    calc($('#area').id, $('#area').val());
 });

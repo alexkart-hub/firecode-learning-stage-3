@@ -82,7 +82,7 @@
                 <div class="calc_left">
                     <h2>Итоговая цена:</h2>
                     <div class="calc_price" id="total_price">
-                        <span>5659 рублей</span>
+                        <span>0 рублей</span>
                     </div>
                     <form action="" id="form">
                         <label for="town">Город доставки</label>
