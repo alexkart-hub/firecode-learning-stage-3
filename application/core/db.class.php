@@ -84,4 +84,32 @@ class Db
             }
         }
     }
+    static public function GetRequests()
+    {
+        $result = self::ExecuteQuery("SELECT * FROM requests");
+        if ($result->num_rows > 0) {
+            $num_row = 0;
+            while ($row = $result->fetch_assoc()) {
+                foreach ($row as $key => $volue) {
+                    $requests[$num_row][$key] = $volue;
+                }
+                $num_row++;
+            }
+            $result->free();
+            return $requests;
+        } else {
+            return false;
+        }
+    }
+    static public function SaveRequest($data)
+    {
+        $city_destination = $data['city_destination'];
+        $date_birth = $data['date_birth'];
+        $phone_number = $data['phone_number'];
+        $text_request = json_encode($data['text_request'], JSON_UNESCAPED_UNICODE);
+        $date_request = $data['date_request'];
+        $user_ip = $data['user_ip'];
+
+        return self::ExecuteQuery("INSERT INTO requests (city_destination,date_birth,phone_number,text_request,date_request,user_ip) VALUES ('$city_destination', '$date_birth', '$phone_number', '$text_request', '$date_request', '$user_ip' )");
+    }
 }

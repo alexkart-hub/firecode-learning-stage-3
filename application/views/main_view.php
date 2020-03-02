@@ -52,27 +52,20 @@
                             </div>
                             <h3>Цвет</h3>
                             <div id="group2">
-                                <div class="item_calc">
-                                    <label for="" class="">
-                                 Синий
-                            </label>
-                                    <input type="checkbox" name="color" id="color1" class="input_radio" value="Синий" checked>
-                                    <label for="color1" class="factura"></label>
-                                </div>
-                                <div class="item_calc">
-                                    <label for="" class="">
-                                 Красный
-                            </label>
-                                    <input type="checkbox" name="color" id="color2" class="input_radio" value="Красный">
-                                    <label for="color2" class="factura"></label>
-                                </div>
-                                <div class="item_calc">
-                                    <label for="" class="">
-                                 Зеленый
-                            </label>
-                                    <input type="checkbox" name="color" id="color3" class="input_radio" value="Зеленый">
-                                    <label for="color3" class="factura"></label>
-                                </div>
+                                <?php $counter = 1;
+                                foreach($data as $key => $value):
+                                    if($key === "color".$counter): 
+                                    $checked = $counter==1?'checked':''?>
+                                    <div class="item_calc">
+                                        <label for="" class="">
+                                            <?= $value;?>
+                                        </label>
+                                        <input type="checkbox" name="color" id="color<?= $counter;?>" class="input_radio" value="<?= $value;?>" <?= $checked; ?>>
+                                        <label for="color<?= $counter;?>" class="factura"></label>
+                                    </div>
+                                    <?php $counter++;
+                                    endif;
+                                endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -84,7 +77,7 @@
                     <div class="calc_price" id="total_price">
                         <span>0 рублей</span>
                     </div>
-                    <form action="" id="form">
+                    <form action="saveRequest.php" id="form">
                         <label for="town">Город доставки</label>
                         <select name="town" id="town">
                     <option selected disabled>Выберите город</option>

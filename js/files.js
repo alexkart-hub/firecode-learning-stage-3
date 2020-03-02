@@ -58,6 +58,23 @@ $('#group2 input:checkbox').click(function() {
         $('#group2 input:checkbox').not(this).prop('checked', false);
     }
 });
+
+function textRequest() {
+    let text = [];
+    if ($('#area').val()) { text.push(['Площадь потолков: ', $('#area').val()]); }
+    if ($('#q_lamp').val()) { text.push(['Светильников: ', $('#q_lamp').val()]); }
+    if ($('#q_chandelier').val()) { text.push(['Люстр: ', $('#q_chandelier').val()]); }
+    if ($('#q_pipe').val()) { text.push(['Труб: ', $('#q_pipe').val()]); }
+    if ($('#q_corner').val()) { text.push(['Углов: ', $('#q_corner').val()]); }
+    if ($('#factura1').is(':checked')) { text.push(['Фактура', $('#factura1').val()]); } else { text.push(['Фактура', $('#factura2').val()]); }
+    for (let value of $('#group2 input:checkbox')) {
+        if (value.checked) {
+            text.push(['Цвет: ', value.value]);
+        }
+    }
+    return text;
+}
+
 // - при нажатии кнопки ОСТАВИТЬ ЗАЯВКУ (id="submit")
 //   проверяется наличие введенного номера телефона
 //   и установка флажка обработки персональных данных
@@ -67,11 +84,19 @@ $("#submit").on({
         let phone = $('#telephone');
         if (check_box.is(':checked') && phone.val() != '') { // если все условия выполнены,
             $.ajax({ // то делается Ajax-запрос...
-                url: 'php/script.php',
+                type: 'POST',
+                url: 'saveRequest.php',
                 cache: false,
-                success: function(text) { // в случае успешного прохождения запроса
+                data: {
+                    city: $('#town').val(),
+                    date_birth: $('#datepicker').val(),
+                    phone: $('#telephone').val(),
+                    text: textRequest(),
+                    user_ip: 'user_ip'
+                },
+                success: function(html) { // в случае успешного прохождения запроса
                     $('.popup-fade').fadeIn(); // открывается модальное окно
-                    return text;
+                    console.log(html);
                 }
             });
         } else { // ...иначе выскакивает напоминалка

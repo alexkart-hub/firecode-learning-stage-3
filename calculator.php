@@ -19,5 +19,5 @@ switch ($id) {
     case 'q_corner': $quantity_corner = $value==0 ? 0 : $value; break;
 }
 
-$total_prise = ($data['price_ceiling'] * $quantity_ceiling * $factura)+($data['price_lamp'] * $quantity_lamp) + ($data['price_chandelier'] * $quantity_chandelier)+($data['price_pipe'] * $quantity_pipe)+($data['price_corner'] * $quantity_corner);
+$total_prise = (($data['price_ceiling']+$factura) * $quantity_ceiling)+($data['price_lamp'] * $quantity_lamp) + ($data['price_chandelier'] * $quantity_chandelier)+($data['price_pipe'] * $quantity_pipe)+($data['price_corner'] * $quantity_corner);
 echo $total_prise.' рублей';
