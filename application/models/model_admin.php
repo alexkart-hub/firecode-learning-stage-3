@@ -7,7 +7,7 @@ class Model_Admin extends Model
          $data += Db::GetColors();
          $data += Db::GetSetting();
          $data += Db::GetRequests() == null ? [] : Db::GetRequests();
-        debug($data);
+        // debug($data);
         return $data;
     }
 }

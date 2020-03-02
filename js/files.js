@@ -1,6 +1,12 @@
 //--------- Кастомизированный ввод даты (datapicker)
 $(function() {
     $("#datepicker").datepicker({
+
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "1920:2050",
+        firstDay: 1,
+
         showAnim: "drop"
             // showAnim: "fold"
             // showAnim: "slideDown"
@@ -8,7 +14,12 @@ $(function() {
             // showAnim: "clip"
             // showAnim: "slide"
     });
+    $("#datepicker").datepicker("option", "dateFormat", 'dd-mm-yy');
 });
+
+
+
+
 // - Кастомизированный select для выбора города
 // - (js/jquery.nice-select.js)
 $(document).ready(function() {
@@ -17,7 +28,7 @@ $(document).ready(function() {
 // - Маска для ввода номера телефона
 // - (js/jquery.maskedinput.js)
 $(function() {
-    $("#telephone").mask("+7(999) 999-99-99");
+    $("#telephone").mask("+7(999)999-99-99");
 });
 // - Валидация текстовых полей ввода калькулятора
 $(".input_calc").on({
@@ -66,12 +77,14 @@ function textRequest() {
     if ($('#q_chandelier').val()) { text.push(['Люстр: ', $('#q_chandelier').val()]); }
     if ($('#q_pipe').val()) { text.push(['Труб: ', $('#q_pipe').val()]); }
     if ($('#q_corner').val()) { text.push(['Углов: ', $('#q_corner').val()]); }
-    if ($('#factura1').is(':checked')) { text.push(['Фактура', $('#factura1').val()]); } else { text.push(['Фактура', $('#factura2').val()]); }
+    if ($('#factura1').is(':checked')) { text.push(['Фактура:', $('#factura1').val()]); } else { text.push(['Фактура:', $('#factura2').val()]); }
     for (let value of $('#group2 input:checkbox')) {
         if (value.checked) {
             text.push(['Цвет: ', value.value]);
         }
     }
+    text.push(['Итоговая сумма: ', $('#total_price>span').text()]);
+    console.log(text);
     return text;
 }
 

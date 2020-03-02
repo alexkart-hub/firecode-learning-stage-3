@@ -6,5 +6,8 @@ if (substr($id, 0, 1) == 'd') {
     User::DeleteUser($login);
 } elseif(substr($id,0,1) == 'c') {
      Db::DeleteColor($id);
+} elseif(substr($id,0,1) == 'r') {
+    Db::DeleteRequest(substr($id,2));
+    echo substr($id,2);
 }
-header("Location: admin");
+// header("Location: admin");

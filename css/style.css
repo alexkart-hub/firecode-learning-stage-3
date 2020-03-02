@@ -917,6 +917,12 @@ h2 {
     color: #ea0000;
 }
 
+.fa-edit,
+.fa-plus,
+.fa-times {
+    cursor: pointer;
+}
+
 .tab_header,
 .tab_row {
     margin-left: 0;
@@ -1079,6 +1085,10 @@ h2 {
 .orders div.order-2 .row,
 .orders div.order-3 .row {
     height: 100%;
+}
+
+.orders .tab_row {
+    font-size: 14px;
 }
 
 .orders ul {

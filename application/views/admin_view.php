@@ -151,16 +151,19 @@
             </div>
         </div>
     </div>
+    <?php $counter = 1;
+    foreach($data as $key => $value): 
+    if($key==='request'.$counter): ?>
     <div class="container">
-        <div class="row tab_row">
+        <div class="row tab_row <?=$counter%2==1?'':'tab_row_2'; ?>">
             <div class="col-xl-5 col-lg-3 col-md-5 col-10 order-1">
                 <div class="row text-center">
-                    <div class="col-xl-1 col-2 tab px-0">1</div>
+                    <div class="col-xl-1 col-2 tab px-0"><?=$value['request_id'];?></div>
                     <div class="col-xl-11 col-10">
                         <div class="row">
-                            <div class="col-xl-4 col-12 tab px-0">+7-999-876-54-32</div>
-                            <div class="col-xl-4 col-12 tab px-0">12.12.2012</div>
-                            <div class="col-xl-4 col-12 tab px-0">Ростов-на-Дону</div>
+                            <div class="col-xl-4 col-12 tab px-0"><?=$value['phone_number']; ?></div>
+                            <div class="col-xl-4 col-12 tab px-0"><?=$value['date_birth']; ?></div>
+                            <div class="col-xl-4 col-12 tab px-0"><?=$value['city_destination']; ?></div>
                         </div>
                     </div>
                 </div>
@@ -170,65 +173,25 @@
 
                     <div class="col-xl-6 col-lg-4">
                         <div class="row">
-                            <div class="col-xl-6 tab px-0 text-center">14:00 20.02.2020</div>
-                            <div class="col-xl-6 tab px-0 text-center">196.128.137.255</div>
+                            <div class="col-xl-6 tab px-0 text-center"><?=$value['date_request']; ?></div>
+                            <div class="col-xl-6 tab px-0 text-center"><?=$value['user_ip']; ?></div>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-8 tab px-0 order-lg-first list">
                         <ul>
-                            <li>Площадь потолка: 16 кв.м.</li>
-                            <li>Светильников 2 шт.</li>
-                            <li>Люстр: 1 шт.</li>
-                            <li>Фактура: матовая</li>
-                            <li>Цвет: белый</li>
-                            <li>Итоговая сумма: 16 600 рублей</li>
+                            <?php foreach($value['text_request'] as $k => $v): ?>
+                                <li><?=$v[0];?><?=$v[1];?></li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-xl-1 col-2 order-2 order-md-3 tab px-0 text-center">
-                <i class="fas fa-times fa-2x"></i>
+                <i class="fas fa-times fa-2x" id="r-<?= $value['request_id']; ?>"></i>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row tab_row tab_row_2">
-            <div class="col-xl-5 col-lg-3 col-md-5 col-10 order-1">
-                <div class="row text-center">
-                    <div class="col-xl-1 col-2 tab px-0">2</div>
-                    <div class="col-xl-11 col-10">
-                        <div class="row">
-                            <div class="col-xl-4 col-12 tab px-0">+7-888-765-43-21</div>
-                            <div class="col-xl-4 col-12 tab px-0">18.10.1912</div>
-                            <div class="col-xl-4 col-12 tab px-0">Санкт-Питербург</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-7 col-md-5 order-3 order-md-2">
-                <div class="row">
-
-                    <div class="col-xl-6 col-lg-4">
-                        <div class="row">
-                            <div class="col-xl-6 tab px-0 text-center">11:17 21.02.2020</div>
-                            <div class="col-xl-6 tab px-0 text-center">127.205.111.255</div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-8 tab px-0 order-lg-first list">
-                        <ul>
-                            <li>Площадь потолка: 45 кв.м.</li>
-                            <li>Светильников 3 шт.</li>
-                            <li>Углов: 7 шт.</li>
-                            <li>Фактура: матовая</li>
-                            <li>Цвет: зеленый</li>
-                            <li>Итоговая сумма: 48 100 рублей</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-1 col-2 order-2 order-md-3 tab px-0 text-center">
-                <i class="fas fa-times fa-2x"></i>
-            </div>
-        </div>
-    </div>
+    <?php $counter++;
+    endif;
+endforeach; ?>
 </section>

@@ -23,6 +23,7 @@ $('.fa-times').on({
             url: 'delete.php',
             data: { id: this.id },
             success: function(html) {
+                console.log(html);
                 location.reload(false);
             }
         });
@@ -34,6 +35,7 @@ $('.fa-plus').on({
         $('#addColorBlock').toggleClass('d-block');
     }
 });
+
 $('#addColor_button').on({
     click: function(e) {
         $.ajax({
@@ -74,8 +76,8 @@ $('#area, #q_lamp, #q_chandelier, #q_pipe, #q_corner, #factura1, #factura2, inpu
     }
 });
 
-function calc(this_id, this_value){
-    if($('#factura1').prop('checked')){
+function calc(this_id, this_value) {
+    if ($('#factura1').prop('checked')) {
         factura = 1;
     } else {
         factura = 2;
@@ -94,11 +96,11 @@ function calc(this_id, this_value){
             value: this_value
         },
         success: function(html) {
-            $('#total_price').text(html);
+            $('#total_price>span').text(html);
         }
     });
 }
 
-$(()=>{
+$(() => {
     calc($('#area').id, $('#area').val());
 });
