@@ -90,7 +90,7 @@ class Db
                         $value = json_decode($value, true);
                     }
                     if ($key == 'date_birth' || $key == 'date_request') {
-                        $date = new DateTime($_POST[$key]);
+                        $date = new DateTime($value);
                         $value = $date->format($key == 'date_birth' ? 'd.m.Y' : 'H:i:s d.m.Y');
                     }
 

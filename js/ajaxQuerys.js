@@ -31,9 +31,10 @@ $('.fa-times').on({
     }
 });
 
-$('.fa-plus').on({
+$('.add_new_color').on({
     click: function(e) {
         $('#addColorBlock').toggleClass('d-block');
+        $('#addColor').focus();
     }
 });
 
@@ -52,7 +53,7 @@ $('#addColor_button').on({
     }
 });
 
-$('#login').on({
+$('.users #login').on({
     input: function(e) {
         $.ajax({
             type: "POST",
@@ -60,17 +61,19 @@ $('#login').on({
             data: { login: this.value },
             success: function(html) {
                 if (html) {
+                    hint('Такой пользователь есть. Будет обновлен пароль. Если Вы оставите пароль пустым, то для пользователя останется его предыдущий пароль', $('#login'));
                     $('#button1').val('Обновить пароль');
                 } else {
-                    $('#button1').val('Добавить ползователя');
+                    $('#button1').val('Добавить пользователя');
+                    hintOut();
                 }
-                $('#new_user_form_out').text(html);
+                // $('#new_user_form_out').text(html);
             }
         });
-    }
+    },
+
 });
 
-// #price_area, #price_lamp, #price_corner, #price_glossy, #price_matt, #price_chandelier, #price_pipe,
 $('#area, #q_lamp, #q_chandelier, #q_pipe, #q_corner, #factura1, #factura2, input[id*="color"]').on({
     input: function(e) {
         calc(this.id, this.value);
@@ -150,5 +153,32 @@ $('#button2').on({
                 // console.log(html);
             }
         });
+    }
+});
+
+$('.auth #submit_auth').on({
+    click: function(e) {
+        $.ajax({
+            type: "post",
+            url: 'checkAuth.php',
+            data: {
+                login: $('#login').val(),
+                password: $('#password').val()
+            },
+            success: function(html) {
+                if (!html) {
+                    hint("Неправильный логин или пароль! Попробуйте еще...", $('.auth .popup h1'));
+                } else {
+                    location.reload();
+                }
+                console.log(html);
+            }
+        });
+    }
+});
+
+$('.auth #login').on({
+    click: function(e) {
+        hintOut();
     }
 });

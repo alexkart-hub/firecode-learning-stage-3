@@ -1,5 +1,5 @@
 <section class="users my-5">
-    <div class="container">
+    <div class="container" id="users_table">
         <h1>Пользователи</h1>
         <div class="row tab_header">
             <div class="col-md-1 col-sm-2 col-1 text-center tab">
@@ -35,8 +35,8 @@
         <!-- ************************************************************* -->
     </div>
     <div class="container mb-5">
-        <h2>Добавление нового пользователя</h2>
-        <form action="" method="post">
+        <h2 id="AddUserTitle">Добавление нового пользователя</h2>
+        <form action="" method="post" >
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm new_user_form">
                     <label for="">Логин</label>
@@ -106,8 +106,8 @@
                     <p class="add_new_color">Добавить новый цвет <i class="fas fa-plus"></i></p>
                     <input id="button2" type="button" value="Сохранить изменения" name="saveChange">
                     <div id="addColorBlock">
-                        <label for="addColor"></label>
-                        <input type="text" name="addColor" id="addColor" placeholder="Введите цвет">
+                        <label for="addColor">Введите название цвета</label>
+                        <input type="text" name="addColor" id="addColor">
                         <div id="addColor_button">
                             <i class="fas fa-plus"></i>
                         </div>

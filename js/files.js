@@ -189,8 +189,8 @@ function hint(massage, obj) {
                 }
             })
             .animate({
-                'width': 300,
-                'height': 100
+                'width': 310,
+                'height': 120
             }, {
                 duration: 300,
                 queue: true,
@@ -200,38 +200,10 @@ function hint(massage, obj) {
                 },
                 complele: function(e) {
                     obj.on({
-                        'click': function() {
+                        click: function() {
                             hintOut();
                         }
                     });
-                }
-            });
-    } else {
-        img
-            .animate({
-                'top': start.top,
-                'width': start.width,
-                'opacity': start.opacity
-            }, {
-                duration: 1000,
-                queue: false,
-                specialEasing: {
-                    height: 'swing',
-                    width: 'swing'
-                }
-            })
-            .animate({
-                'left': start.left,
-                'height': start.height
-            }, {
-                duration: 700,
-                queue: true,
-                specialEasing: {
-                    height: 'swing',
-                    width: 'swing'
-                },
-                complete: function() {
-                    document.querySelector('.hint>p').innerHTML = '';
                 }
             });
     }
@@ -246,7 +218,7 @@ function hintOut() {
             'width': start.width,
             'opacity': start.opacity
         }, {
-            duration: 1000,
+            duration: 800,
             queue: false,
             specialEasing: {
                 height: 'swing',
@@ -257,7 +229,7 @@ function hintOut() {
             'left': start.left,
             'height': start.height
         }, {
-            duration: 700,
+            duration: 500,
             queue: true,
             specialEasing: {
                 height: 'swing',
