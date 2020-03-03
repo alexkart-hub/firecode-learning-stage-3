@@ -57,32 +57,32 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <label for="">Цена за кв.м потолка:</label>
-                    <input type="text" class="input_calc" id="price_area" value="270">
+                    <input type="text" class="input_calc" id="price_area" value="<?=$data['price_ceiling'] ?>">
                     <label for="">Цена за светильник:</label>
-                    <input type="text" class="input_calc" id="price_lamp" value="170">
+                    <input type="text" class="input_calc" id="price_lamp" value="<?=$data['price_lamp'] ?>">
                     <label for="">Цена за угол:</label>
-                    <input type="text" class="input_calc" id="price_corner" value="120">
+                    <input type="text" class="input_calc" id="price_corner" value="<?=$data['price_corner'] ?>">
                 </div>
                 <div class="col-lg-8 col-md-6">
                     <div class="container px-0">
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Цена за глянцевую фактуру:</label>
-                                <input type="text" class="input_calc" id="price_glossy" value="25">
+                                <input type="text" class="input_calc" id="price_glossy" value="<?=$data['price_glossy_texture']?>">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Цена за матовую фактуру:</label>
-                                <input type="text" class="input_calc" id="price_matt" value="21">
+                                <input type="text" class="input_calc" id="price_matt" value="<?=$data['price_matte_texture'] ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Цена за люстру:</label>
-                                <input type="text" class="input_calc" id="price_chandelier" value="225">
+                                <input type="text" class="input_calc" id="price_chandelier" value="<?=$data['price_chandelier'] ?>">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Цена за трубу:</label>
-                                <input type="text" class="input_calc" id="price_pipe" value="150">
+                                <input type="text" class="input_calc" id="price_pipe" value="<?=$data['price_pipe'] ?>">
                             </div>
                         </div>
                     </div>
