@@ -10,6 +10,7 @@ $('.users .fa-edit').on({
                 $('html, body').animate({
                     scrollTop: $("#login").prev().offset().top
                 }, 1000);
+                $('#password').focus();
             }
         });
     }
@@ -101,6 +102,53 @@ function calc(this_id, this_value) {
     });
 }
 
+$('#button1').on({
+    click: function(e) {
+        if ($('#password').val().length >= 4) {
+            $.ajax({
+                type: "POST",
+                url: "createUser.php",
+                data: {
+                    login: $('#login').val(),
+                    password: $('#password').val()
+                },
+                success: function(html) {
+                    location.reload(false);
+                }
+            });
+        } else {
+            hint('Пароль должен иметь длину не менее 4-х символов!', $('#password'));
+        }
+    }
+});
+
 $(() => {
     calc($('#area').id, $('#area').val());
+});
+
+$('#password').on({
+    click: function(e) {
+        hintOut();
+    }
+});
+
+$('#button2').on({
+    click: function(e) {
+        $.ajax({
+            type: "POST",
+            url: "saveSettings.php",
+            data: {
+                price_ceiling: $('#price_area').val(),
+                price_lamp: $('#price_lamp').val(),
+                price_chandelier: $('#price_chandelier').val(),
+                price_pipe: $('#price_pipe').val(),
+                price_corner: $('#price_corner').val(),
+                price_glossy_texture: $('#price_glossy').val(),
+                price_matte_texture: $('#price_matt').val()
+            },
+            success: function(html) {
+                // console.log(html);
+            }
+        });
+    }
 });

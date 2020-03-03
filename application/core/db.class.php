@@ -76,13 +76,8 @@ class Db
 
     static public function SetSetting($data)
     {
-        foreach($data as $key => $value) {
-            if(substr($key,0,5) == 'color'){
-                $color_variants[$key] = $value;
-            } elseif(substr($key,0,5) == 'price') {
-            self::ExecuteQuery("UPDATE settings SET $key = '$value' WHERE setting_id = 1");
-            }
-        }
+        extract($data);
+        self::ExecuteQuery("UPDATE settings SET price_ceiling = '$price_ceiling',price_lamp = '$price_lamp',price_chandelier = '$price_chandelier',price_pipe = '$price_pipe',price_corner = '$price_corner',price_glossy_texture = '$price_glossy_texture',price_matte_texture = '$price_matte_texture' WHERE setting_id = 1");
     }
     static public function GetRequests()
     {
@@ -91,15 +86,15 @@ class Db
             $num_row = 1;
             while ($row = $result->fetch_assoc()) {
                 foreach ($row as $key => $value) {
-                    if($key=='text_request'){
-                        $value = json_decode($value,true);
+                    if ($key == 'text_request') {
+                        $value = json_decode($value, true);
                     }
-                    if($key=='date_birth' || $key == 'date_request'){
+                    if ($key == 'date_birth' || $key == 'date_request') {
                         $date = new DateTime($_POST[$key]);
-                        $value = $date ->format($key=='date_birth'?'d.m.Y':'H:i:s d.m.Y');
+                        $value = $date->format($key == 'date_birth' ? 'd.m.Y' : 'H:i:s d.m.Y');
                     }
-                    
-                    $requests['request'.$num_row][$key] = $value;
+
+                    $requests['request' . $num_row][$key] = $value;
                 }
                 $num_row++;
             }
@@ -118,7 +113,7 @@ class Db
         $date_request = $data['date_request'];
         $user_ip = $data['user_ip'];
         $request = "INSERT INTO requests (city_destination,date_birth,phone_number,text_request,date_request,user_ip) VALUES ('$city_destination', '$date_birth', '$phone_number', '$text_request', '$date_request', '$user_ip' )";
-        return $request."    ". self::ExecuteQuery($request);
+        return $request . "    " . self::ExecuteQuery($request);
     }
     static public function DeleteRequest($id)
     {

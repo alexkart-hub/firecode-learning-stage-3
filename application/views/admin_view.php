@@ -36,17 +36,16 @@
     </div>
     <div class="container mb-5">
         <h2>Добавление нового пользователя</h2>
-        <form action="createuser.php" method="post">
+        <form action="" method="post">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm new_user_form">
                     <label for="">Логин</label>
                     <input type="text" placeholder="Логин пользователя" name="login" id="login">
                     <label for="">Пароль</label>
                     <input type="password" placeholder="Пароль пользователя" name="password" id="password">
-                    <input id="button1" type="submit" value="Добавить пользователя" name="add_user">
+                    <input id="button1" type="button" value="Добавить пользователя" name="add_user">
                     <div class="new_user_form_out" id="new_user_form_out"></div>
                 </div>
-
             </div>
         </form>
     </div>
@@ -54,7 +53,7 @@
 <section class="calculator_setting my-5">
     <div class="container new_user_form">
         <h1>Настройки калькулятора</h1>
-        <form action="" method="post">
+        <form method="post">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <label for="">Цена за кв.м потолка:</label>
@@ -105,7 +104,7 @@
                         endforeach; ?>
                     </ul>
                     <p class="add_new_color">Добавить новый цвет <i class="fas fa-plus"></i></p>
-                    <input id="button2" type="submit" value="Сохранить изменения" name="saveChange">
+                    <input id="button2" type="button" value="Сохранить изменения" name="saveChange">
                     <div id="addColorBlock">
                         <label for="addColor"></label>
                         <input type="text" name="addColor" id="addColor" placeholder="Введите цвет">
