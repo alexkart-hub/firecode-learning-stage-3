@@ -16,9 +16,9 @@ if (!empty($_POST)) {
     ];
     // debug($text);
     // debug(DB::SaveRequest($data));
-    if (DB::SaveRequest($data)) {
+    if (Request::Save($data,$db)) {
         $to  = "<mail@example.com>";
-        // $to .= ",mail2@example.com>";
+        // $to .= "<mail2@example.com>";
 
         $subject = "Поступила новая заявка";
         $message = "";

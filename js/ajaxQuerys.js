@@ -156,26 +156,14 @@ $('#button2').on({
     }
 });
 
-$('.auth #submit_auth').on({
-    click: function(e) {
-        $.ajax({
-            type: "post",
-            url: 'checkAuth.php',
-            data: {
-                login: $('#login').val(),
-                password: $('#password').val()
-            },
-            success: function(html) {
-                if (!html) {
-                    hint("Неправильный логин или пароль! Попробуйте еще...", $('.auth .popup h1'));
-                } else {
-                    location.reload();
-                }
-                console.log(html);
-            }
-        });
+$(() => {
+    console.log($('.auth .message').text().length);
+    if ($('.auth .message').text()) {
+        hint("Неправильный логин или пароль! Попробуйте еще...", $('.auth .popup h1'));
+
     }
 });
+
 
 $('.auth #login').on({
     click: function(e) {

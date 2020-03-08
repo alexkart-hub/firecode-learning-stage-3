@@ -4,6 +4,6 @@ if (!empty($_POST)) {
     foreach ($_POST as $key => $value) {
         $data[$key] = $value;
     }
-    Db::SetSetting($data);
+    Settings::Save($data, $db);
 }
 header("Location: admin");

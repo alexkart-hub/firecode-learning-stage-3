@@ -869,6 +869,10 @@ label {
     color: #fff;
 }
 
+.auth .message {
+    display: none;
+}
+
 @media only screen and (max-width: 768px) {
     .auth {
         height: 480px;

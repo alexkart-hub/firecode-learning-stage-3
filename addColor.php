@@ -3,6 +3,6 @@ require_once 'application/autoload.php';
 
 $color = $_POST['color'];
 if ($color) {
-    Db::AddColor($color);
+    Color::Add($color, $db);
 }
 header("Location: admin");

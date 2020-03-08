@@ -3,7 +3,7 @@ require_once "application/autoload.php";
 
 $id = $_POST['id'];
 $value = $_POST['value'];
-$data = Db::GetSetting();
+$data = Settings::Get($db);
 $quantity_ceiling = $_POST['area']==0 ? 0 : $_POST['area'];
 $quantity_lamp = $_POST['q_lamp']==0 ? 0 : $_POST['q_lamp'];
 $quantity_chandelier = $_POST['q_chandelier']==0 ? 0 : $_POST['q_chandelier'];
