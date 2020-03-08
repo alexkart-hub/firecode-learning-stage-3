@@ -1,6 +1,10 @@
 <?php 
 class Settings
 {
+    /**
+     * @param Db $db
+     * @return array
+     */
     static public function Get(Db $db)
     {
         $result = $db->ExecuteQuery("SELECT * FROM settings WHERE setting_id = 1");
@@ -13,9 +17,14 @@ class Settings
         return $data; 
     }
 
+    /**
+     * @param array $data
+     * @param Db $db
+     * @return boolean
+     */
     static public function Save(array $data, Db $db)
     {
         extract($data);
-        $db->ExecuteQuery("UPDATE settings SET price_ceiling = '$price_ceiling',price_lamp = '$price_lamp',price_chandelier = '$price_chandelier',price_pipe = '$price_pipe',price_corner = '$price_corner',price_glossy_texture = '$price_glossy_texture',price_matte_texture = '$price_matte_texture' WHERE setting_id = 1");
+        return $db->ExecuteQuery("UPDATE settings SET price_ceiling = '$price_ceiling',price_lamp = '$price_lamp',price_chandelier = '$price_chandelier',price_pipe = '$price_pipe',price_corner = '$price_corner',price_glossy_texture = '$price_glossy_texture',price_matte_texture = '$price_matte_texture' WHERE setting_id = 1");
     }
 }

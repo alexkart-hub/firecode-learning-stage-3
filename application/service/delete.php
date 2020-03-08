@@ -1,5 +1,5 @@
 <?php
-require_once 'application/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/application/autoload.php';
 $id = $_POST['id'];
 if (substr($id, 0, 1) == 'd') {
     $login = User::GetUserById(substr($id, 2))['login'];

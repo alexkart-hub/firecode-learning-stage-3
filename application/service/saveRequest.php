@@ -1,5 +1,5 @@
 <?php
-require_once "application/autoload.php";
+require_once $_SERVER['DOCUMENT_ROOT'].'/application/autoload.php';
 if (!empty($_POST)) {
 
     if (!empty($_POST['text'])) {
@@ -15,7 +15,7 @@ if (!empty($_POST)) {
         'user_ip' => $_SERVER['REMOTE_ADDR']
     ];
     // debug($text);
-    // debug(DB::SaveRequest($data));
+    // debug($db);
     if (Request::Save($data,$db)) {
         $to  = "<mail@example.com>";
         // $to .= "<mail2@example.com>";

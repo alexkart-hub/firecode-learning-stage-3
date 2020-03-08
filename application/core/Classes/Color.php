@@ -1,6 +1,10 @@
 <?php 
 class Color
 {
+    /**
+     * @param  Db $db
+     * @return array
+     */
     static public function GetAll(Db $db)
     {
         $result = $db->ExecuteQuery("SELECT color_variants FROM settings");
@@ -8,6 +12,11 @@ class Color
         return json_decode($result['color_variants'], true);
     }
     
+    /**
+     * @param int $number
+     * @param  Db $db
+     * @return boolean
+     */
     static public function Delete($number, Db $db)
     {
         $result = self::GetAll($db);
@@ -18,10 +27,15 @@ class Color
             }
         }
         $newColorVariants = json_encode($newColorVariants, JSON_UNESCAPED_UNICODE);
-        $db->ExecuteQuery("UPDATE settings SET color_variants = '$newColorVariants'");
+        return $db->ExecuteQuery("UPDATE settings SET color_variants = '$newColorVariants'");
     }
-    
-    static public function Add($color, Db $db)
+
+    /**
+     * @param str $color
+     * @param Db $db
+     * @return boolean
+     */
+    static public function Add(string $color, Db $db)
     {
         $colorVariants = self::GetAll($db);
         $countColors = count($colorVariants);

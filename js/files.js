@@ -98,7 +98,7 @@ $("#submit").on({
         if (check_box.is(':checked') && phone.val() != '') { // если все условия выполнены,
             $.ajax({ // то делается Ajax-запрос...
                 type: 'POST',
-                url: 'saveRequest.php',
+                url: 'application/service/saveRequest.php',
                 cache: false,
                 data: {
                     city: $('#town').val(),

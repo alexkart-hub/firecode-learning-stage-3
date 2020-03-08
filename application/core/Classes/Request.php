@@ -1,6 +1,10 @@
 <?php 
 class Request
 {
+    /**
+     * @param Db $db
+     * @return array|boolean
+     */
     static public function GetAll(Db $db)
     {
         $result = $db->ExecuteQuery("SELECT * FROM requests");
@@ -26,7 +30,13 @@ class Request
             return false;
         }
     }
-    static public function Save($data, Db $db)
+
+    /**
+     * @param array $data
+     * @param Db $db
+     * @return boolean
+     */
+    static public function Save(array $data, Db $db)
     {
         $city_destination = $data['city_destination'];
         $date_birth = $data['date_birth'];
@@ -39,7 +49,13 @@ class Request
 
         return $result;
     }
-    static public function Delete($id,Db $db)
+
+    /**
+     * @param int $id
+     * @param Db $db
+     * @return boolean
+     */
+    static public function Delete(int $id, Db $db)
     {
         $result = $db->ExecuteQuery("DELETE FROM requests WHERE request_id = '$id'");
         return $result;

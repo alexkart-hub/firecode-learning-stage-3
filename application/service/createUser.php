@@ -1,5 +1,5 @@
 <?php
-require_once 'application/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/application/autoload.php';
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
         if (!User::IsUserExist($_POST['login'])) {
             User::CreateUser($_POST['login'], $_POST['password']);

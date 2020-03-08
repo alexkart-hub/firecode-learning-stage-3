@@ -1,5 +1,5 @@
 <?php
-require_once "application/autoload.php";
+require_once $_SERVER['DOCUMENT_ROOT'].'/application/autoload.php';
 
 $id = $_POST['id'];
 $value = $_POST['value'];

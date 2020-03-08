@@ -56,7 +56,7 @@ class User
     static public function IsUserExist($login)
     {
         $db = DbMysqli::getInstance();
-        $login = $db->real_escape_string($login);
+        $login = $db->Connect()->real_escape_string($login);
         $query = "SELECT login FROM users WHERE login = '$login'";
         $result = $db->ExecuteQuery($query);
         if ($result->num_rows == 1) {
@@ -68,7 +68,7 @@ class User
     static public function CheckPassword($login, $password)
     {
         $db = DbMysqli::getInstance();
-        $login = $db->real_escape_string($login);
+        $login = $db->Connect()->real_escape_string($login);
         $query = "SELECT login, password FROM users WHERE login = '$login'";
         $result = $db->ExecuteQuery($query);
         if ($result->num_rows == 1) {
@@ -86,7 +86,7 @@ class User
     static public function CreateUser($login,$password)
     {
         $db = DbMysqli::getInstance();
-        $login = $db->real_escape_string($login);
+        $login = $db->Connect()->real_escape_string($login);
         $password = password_hash($password,PASSWORD_DEFAULT);
         $query = "INSERT INTO users (login, password) VALUES ('$login','$password')";
         if($db->ExecuteQuery($query)){
@@ -98,7 +98,7 @@ class User
     static public function UpdateUser($login,$password)
     {
         $db = DbMysqli::getInstance();
-        $login = $db->real_escape_string($login);
+        $login = $db->Connect()->real_escape_string($login);
         $password = password_hash($password,PASSWORD_DEFAULT);
         $query = "UPDATE users SET  password = '$password' WHERE login = '$login'";
         if($db->ExecuteQuery($query)){
@@ -110,7 +110,7 @@ class User
     static public function DeleteUser($login)
     {
         $db = DbMysqli::getInstance();
-        $login = $db->real_escape_string($login);
+        $login = $db->Connect()->real_escape_string($login);
         $query = "DELETE FROM users WHERE login = '$login'";
         if($db->ExecuteQuery($query)){
             return true;

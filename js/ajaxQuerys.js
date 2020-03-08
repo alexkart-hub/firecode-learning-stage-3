@@ -2,7 +2,7 @@ $('.users .fa-edit').on({
     click: function(e) {
         $.ajax({
             type: 'POST',
-            url: 'updateUser.php',
+            url: 'application/service/updateUser.php',
             data: { id: this.id },
             success: function(html) {
                 $('#login').val(html).trigger("input");
@@ -21,7 +21,7 @@ $('.fa-times').on({
         $.ajax({
             type: 'POST',
             cache: false,
-            url: 'delete.php',
+            url: 'application/service/delete.php',
             data: { id: this.id },
             success: function(html) {
                 console.log(html);
@@ -43,7 +43,7 @@ $('#addColor_button').on({
         $.ajax({
             type: 'POST',
             cache: false,
-            url: 'addColor.php',
+            url: 'application/service/addColor.php',
             data: { color: $('#addColor').val() },
             success: function(html) {
                 $('#addColorBlock').toggleClass('d-none');
@@ -57,7 +57,7 @@ $('.users #login').on({
     input: function(e) {
         $.ajax({
             type: "POST",
-            url: "checkLogin.php",
+            url: "application/service/checkLogin.php",
             data: { login: this.value },
             success: function(html) {
                 if (html) {
@@ -88,7 +88,7 @@ function calc(this_id, this_value) {
     }
     $.ajax({
         type: "POST",
-        url: "calculator.php",
+        url: "application/service/calculator.php",
         data: {
             area: $('#area').val(),
             q_lamp: $('#q_lamp').val(),
@@ -110,7 +110,7 @@ $('#button1').on({
         if ($('#password').val().length >= 4) {
             $.ajax({
                 type: "POST",
-                url: "createUser.php",
+                url: "application/service/createUser.php",
                 data: {
                     login: $('#login').val(),
                     password: $('#password').val()
@@ -139,7 +139,7 @@ $('#button2').on({
     click: function(e) {
         $.ajax({
             type: "POST",
-            url: "saveSettings.php",
+            url: "application/service/saveSettings.php",
             data: {
                 price_ceiling: $('#price_area').val(),
                 price_lamp: $('#price_lamp').val(),
