@@ -1,2 +1,1 @@
-<?php 
-echo "404";
+<div class="404">404</div>

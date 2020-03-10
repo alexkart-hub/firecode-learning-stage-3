@@ -1,6 +1,6 @@
 <?php 
 class A_Db
-{
+{ 
     protected $connect;
 
     private function __clone()
